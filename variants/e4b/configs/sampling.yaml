@@ -1,0 +1,9 @@
+# Sampling config — gemma-4-e4b-it-qat-w4a16-ct
+# Low temperature for deterministic, careful edits; thinking budget kept
+# inside the per-task time budget (see eval_config.yaml).
+temperature: 0.2
+top_p: 0.95
+max_output_tokens: 16384
+thinking_config:
+  thinking_budget: 6144
+  include_thoughts: true

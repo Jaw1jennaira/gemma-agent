@@ -1,0 +1,22 @@
+# Gemma 4 Developer Agent Competition 2026 — gemma_swe_agent_31b
+# Main track, highest capability. Default / first Final Submission slot.
+# Model: gemma-4-31b-it-qat-w4a16-ct (exactly ONE model; every agent + sub-agent uses it)
+# Config-only submission: no LoRA adapter (fine-tuning needs a GPU).
+name: gemma_swe_agent_31b
+model: gemma-4-31b-it-qat-w4a16-ct
+description: Autonomous SWE agent for the Gemma 4 Developer Agent Competition — config-only, gemma-4-31b-it-qat-w4a16-ct.
+instruction: !include prompts/system.md
+tools:
+  - run_command
+  - read_file
+  - edit_file
+  - write_file
+  - get_status
+  - submit_patch
+  - get_code_neighbors
+  - search_similar_code
+  - get_code_subgraph
+  - agent_tool:
+      config_path: sub_agents/code_analyzer.yaml
+      skip_summarization: true
+generate_content_config: !include configs/sampling.yaml

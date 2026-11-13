@@ -1,0 +1,11 @@
+# Per-task budget — fits the 12-hour total for ~120 tasks.
+# 12 h / 120 tasks = 6 min/task gross; setup + vLLM start take part of it,
+# so the cap is 5 min/task and 24 tool calls. get_status() and submit_patch()
+# are free (not counted). Values are caps, not targets: most tasks finish
+# well under them. (Community "Budget-Fit" note: 28 calls / 8 min per task
+# would exceed 12 h if every task used the full budget, so we stay below it.)
+evaluation:
+  timeout_seconds: 300
+  max_tool_calls: 24
+  max_time_minutes: 5
+  max_turns: 40
